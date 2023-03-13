@@ -1,5 +1,5 @@
-const { Class, Student } = require("../db");
-const express = require("express");
+const { Class, Student } = require('../db');
+const express = require('express');
 const router = express.Router();
 
 Date.prototype.getWeek = function () {
@@ -8,7 +8,7 @@ Date.prototype.getWeek = function () {
 };
 
 // get one class
-router.get("/:uuid", async (req, res) => {
+router.get('/:uuid', async (req, res) => {
   const theClass = await Class.findOne({ uuid: req.params.uuid });
   if (!theClass) return res.sendStatus(404);
   const students = await Student.find({ classUuid: theClass?.uuid });
@@ -20,7 +20,7 @@ router.get("/:uuid", async (req, res) => {
 });
 
 // create one class
-router.post("/add/:uuid", async (req, res) => {
+router.post('/add/:uuid', async (req, res) => {
   const className = await Class.create({
     ...req.body,
     teacherUuid: req.params.uuid,
@@ -29,13 +29,13 @@ router.post("/add/:uuid", async (req, res) => {
 });
 
 // get all classes for teacher
-router.get("/all/:teacherUuid", async (req, res) => {
+router.get('/all/:teacherUuid', async (req, res) => {
   const classNames = await Class.find({ teacherUuid: req.params.teacherUuid });
   res.send(classNames);
 });
 
 // add one student to class
-router.post("/:uuid", async (req, res) => {
+router.post('/:uuid', async (req, res) => {
   const className = await Class.findOne({ uuid: req.params.uuid });
   const student = await Student.findOne({ uuid: req.body.uuid });
   className.students.push({ uuid: req.body.uuid, name: student.studentName });
@@ -43,7 +43,7 @@ router.post("/:uuid", async (req, res) => {
   res.send(className);
 });
 
-router.get("/statistics/:uuid", async (req, res) => {
+router.get('/statistics/:uuid', async (req, res) => {
   const students = await Student.find({ classUuid: req.params.uuid });
   let statistics = {};
   const studentStats = [];

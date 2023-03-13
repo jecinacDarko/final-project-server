@@ -100,5 +100,5 @@ describe('/api/students endpoints work correctly', () => {
 
 describe('/api/classes endpoints work correctly', () => {
   test.todo('Get one class => GET /api/classes/1');
-  test.todo('Add one student to class => POST /api/students/1')
+  test.todo('Add one student to class => POST /api/students/1');
 });

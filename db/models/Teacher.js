@@ -1,6 +1,6 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const { v4: uuid } = require("uuid");
+const { v4: uuid } = require('uuid');
 
 const TeacherSchema = new Schema({
   uuid: {
@@ -19,6 +19,6 @@ const TeacherSchema = new Schema({
   },
 });
 
-const Teacher = mongoose.model("Teacher", TeacherSchema);
+const Teacher = mongoose.model('Teacher', TeacherSchema);
 
 module.exports = Teacher;

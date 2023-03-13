@@ -1,7 +1,7 @@
-require("dotenv").config();
-const { v4: uuid } = require("uuid");
+require('dotenv').config();
+const { v4: uuid } = require('uuid');
 
-const { uniqueNamesGenerator, names } = require("unique-names-generator");
+const { uniqueNamesGenerator, names } = require('unique-names-generator');
 
 const config = {
   dictionaries: [names],
@@ -9,7 +9,7 @@ const config = {
 
 const generateName = () => uniqueNamesGenerator(config);
 
-const { Student } = require("./db");
+const { Student } = require('./db');
 
 const createStudents = async () => {
   const classUuid = process.argv[2];
@@ -24,7 +24,7 @@ const createStudents = async () => {
       dob: new Date().toISOString(),
       classUuid,
       assessments: [],
-      gender: Math.random() > 0.49 ? "male" : "female",
+      gender: Math.random() > 0.49 ? 'male' : 'female',
     };
     const date = new Date();
     let j = 0;
@@ -35,8 +35,8 @@ const createStudents = async () => {
         present: Math.random() > 0.06,
         goodPerf: Math.random() > 0.09,
         goodBehave: Math.random() > 0.12,
-        perfComment: "A random performance comment",
-        behaveComment: "A random behaviour comment",
+        perfComment: 'A random performance comment',
+        behaveComment: 'A random behaviour comment',
       });
       j++;
       if (j % 5 === 0) {
@@ -48,8 +48,8 @@ const createStudents = async () => {
     students.push(student);
   }
   Student.insertMany(students)
-    .then(() => console.log("done, students added!"))
-    .catch(() => console.log("an error occured"));
+    .then(() => console.log('done, students added!'))
+    .catch(() => console.log('an error occured'));
 };
 
 createStudents();

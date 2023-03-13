@@ -1,5 +1,5 @@
-const mongoose = require("mongoose");
-const { v4: uuid } = require("uuid");
+const mongoose = require('mongoose');
+const { v4: uuid } = require('uuid');
 const Schema = mongoose.Schema;
 
 const StudentSchema = new Schema({
@@ -34,6 +34,6 @@ const StudentSchema = new Schema({
   },
 });
 
-const Student = mongoose.model("Student", StudentSchema);
+const Student = mongoose.model('Student', StudentSchema);
 
 module.exports = Student;

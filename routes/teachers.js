@@ -1,8 +1,8 @@
-const { Teacher } = require("../db");
-const express = require("express");
+const { Teacher } = require('../db');
+const express = require('express');
 const router = express.Router();
 
-const { OAuth2Client } = require("google-auth-library");
+const { OAuth2Client } = require('google-auth-library');
 
 const googleClient = new OAuth2Client({
   clientId: process.env.CLIENT_ID,
@@ -10,11 +10,11 @@ const googleClient = new OAuth2Client({
 });
 
 // login one teacher
-router.post("/login/:access_token", async (req, res) => {
+router.post('/login/:access_token', async (req, res) => {
   try {
     const response = await googleClient.getTokenInfo(req.params.access_token);
     const teacher = await Teacher.findOne({ email: response.email });
-    if (!teacher) throw Error("No teacher found");
+    if (!teacher) throw Error('No teacher found');
     res.send(teacher);
   } catch (error) {
     res.sendStatus(404);
@@ -22,7 +22,7 @@ router.post("/login/:access_token", async (req, res) => {
 });
 
 // signup one teacher
-router.post("/signup/:access_token", async (req, res) => {
+router.post('/signup/:access_token', async (req, res) => {
   try {
     const response = await googleClient.getTokenInfo(req.params.access_token);
     const teacher = await Teacher.create({
