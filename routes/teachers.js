@@ -17,6 +17,7 @@ router.post('/login/:access_token', async (req, res) => {
     if (!teacher) throw Error('No teacher found');
     res.send(teacher);
   } catch (error) {
+    console.error(error);
     res.sendStatus(404);
   }
 });
