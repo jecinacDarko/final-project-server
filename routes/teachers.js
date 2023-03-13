@@ -5,8 +5,8 @@ const router = express.Router();
 const { OAuth2Client } = require('google-auth-library');
 
 const googleClient = new OAuth2Client({
-  clientId: process.env.CLIENT_ID,
-  clientSecret: process.env.SECRET_KEY,
+  clientId: process.env.GOOGLE_CLIENT_ID,
+  clientSecret: process.env.GOOGLE_SECRET_KEY,
 });
 
 // login one teacher
